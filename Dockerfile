@@ -122,11 +122,30 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
         && ln -sf /dev/stdout /var/log/nginx/access.log \
         && ln -sf /dev/stderr /var/log/nginx/error.log
 
+
+ENV TIMEZONE Asia/Shanghai
+
+RUN apk add --no-cache tzdata supervisor libmcrypt \
+    && ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime \
+    && echo $TIMEZONE > /etc/timezone \
+    && apk add --no-cache --virtual .build-php-deps libmcrypt-dev zlib-dev freetype-dev libjpeg-turbo-dev \
+    && docker-php-ext-install mcrypt mysql mysqli pdo_mysql opcache zip \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install gd \
+    && apk del --no-cache .build-php-deps \
+    && mkdir -p /var/log/supervisor
+
+COPY conf/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY conf/php.ini /usr/local/etc/php/php.ini
+
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+COPY conf/supervisord.conf /etc/supervisord.conf
+COPY start.sh /start.sh
+
+EXPOSE 80 443
 
 STOPSIGNAL SIGQUIT
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["sh", "/start.sh"]
