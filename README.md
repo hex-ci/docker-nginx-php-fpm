@@ -1,6 +1,6 @@
 # Nginx and PHP-FPM for Docker
 
-Base on Nginx and PHP official imgae.
+Base on Nginx and PHP official image.
 
 Nginx version: 1.12.0
 
