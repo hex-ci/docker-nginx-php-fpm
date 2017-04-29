@@ -135,14 +135,14 @@ RUN apk add --no-cache tzdata supervisor libmcrypt \
     && apk del --no-cache .build-php-deps \
     && mkdir -p /var/log/supervisor
 
-COPY conf/www.conf /usr/local/etc/php-fpm.d/www.conf
-COPY conf/php.ini /usr/local/etc/php/php.ini
-
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
+COPY conf/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY conf/php.ini /usr/local/etc/php/php.ini
+
 COPY conf/supervisord.conf /etc/supervisord.conf
-COPY start.sh /start.sh
+COPY script/start.sh /start.sh
 
 EXPOSE 80 443
 
