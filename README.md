@@ -2,4 +2,8 @@
 
 Base on Nginx and PHP official imgae.
 
+Nginx version: 1.12.0
+
+PHP version: 5.6.30
+
 To build the container run: docker build -t your-name .
