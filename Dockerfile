@@ -142,7 +142,7 @@ COPY conf/php.ini /usr/local/etc/php/php.ini
 COPY conf/supervisord.conf /etc/supervisord.conf
 COPY script/start.sh /start.sh
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /var/www/html
 
 EXPOSE 80 443
 
