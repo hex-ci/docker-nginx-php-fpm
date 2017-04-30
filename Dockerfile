@@ -144,6 +144,8 @@ COPY script/start.sh /start.sh
 
 WORKDIR /var/www/html
 
+ENTRYPOINT []
+
 EXPOSE 80 443
 
 STOPSIGNAL SIGQUIT
