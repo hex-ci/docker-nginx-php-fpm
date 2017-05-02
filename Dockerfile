@@ -49,7 +49,9 @@ COPY conf/php.ini /etc/php5/php.ini
 COPY s6/ /etc/s6/
 
 RUN chmod -R +x /etc/s6/* \
-    && chmod +x /etc/s6/.s6-svscan/finish
+    && chmod +x /etc/s6/.s6-svscan/finish \
+    && chown -R nginx:nginx /var/lib/nginx/html \
+    && chmod -R 775 /var/lib/nginx/html
 
 WORKDIR /var/lib/nginx/html
 
