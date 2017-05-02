@@ -45,16 +45,16 @@ COPY conf/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 COPY conf/php-fpm.conf /etc/php5/php-fpm.conf
 COPY conf/php.ini /etc/php5/php.ini
 
-COPY conf/supervisord.conf /etc/supervisord.conf
-COPY script/start.sh /start.sh
+COPY s6/ /etc/s6/
+
+RUN chmod -R +x /etc/s6/* \
+    && chmod +x /etc/s6/.s6-svscan/finish
 
 RUN rm -rf /var/www/localhost \
     && mkdir -p /var/www/html
 
 WORKDIR /var/www/html
 
-ENTRYPOINT []
-
 EXPOSE 80
 
-CMD ["sh", "/start.sh"]
+ENTRYPOINT ["/bin/s6-svscan", "/etc/s6"]
