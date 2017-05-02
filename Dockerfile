@@ -38,6 +38,7 @@ RUN rm /usr/bin/php5 \
     && rm /usr/bin/phpize \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
+    && rm -rf /var/www
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
@@ -50,10 +51,7 @@ COPY s6/ /etc/s6/
 RUN chmod -R +x /etc/s6/* \
     && chmod +x /etc/s6/.s6-svscan/finish
 
-RUN rm -rf /var/www/localhost \
-    && mkdir -p /var/www/html
-
-WORKDIR /var/www/html
+WORKDIR /var/lib/nginx/html
 
 EXPOSE 80
 
