@@ -42,8 +42,8 @@ RUN rm /usr/bin/php5 \
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 COPY conf/nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
-COPY conf/www.conf /usr/local/etc/php-fpm.d/www.conf
-COPY conf/php.ini /usr/local/etc/php/php.ini
+COPY conf/php-fpm.conf /etc/php5/php-fpm.conf
+COPY conf/php.ini /etc/php5/php.ini
 
 COPY conf/supervisord.conf /etc/supervisord.conf
 COPY script/start.sh /start.sh
