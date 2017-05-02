@@ -2,7 +2,7 @@
 
 Base on Nginx and PHP official image.
 
-Nginx version: 1.12.0
+Nginx version: 1.10.0
 
 PHP version: 5.6.30
 
