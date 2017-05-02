@@ -1,6 +1,6 @@
 # Nginx and PHP-FPM for Docker
 
-Base on Nginx and PHP official image.
+Base on Alpine Nginx and PHP apk package.
 
 Nginx version: 1.10.0
 
