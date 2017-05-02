@@ -48,6 +48,9 @@ COPY conf/php.ini /etc/php5/php.ini
 COPY conf/supervisord.conf /etc/supervisord.conf
 COPY script/start.sh /start.sh
 
+RUN rm -rf /var/www/localhost \
+    && mkdir -p /var/www/html
+
 WORKDIR /var/www/html
 
 ENTRYPOINT []
