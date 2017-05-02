@@ -37,7 +37,7 @@ RUN rm /usr/bin/php5 \
     && rm /usr/bin/phpize5 \
     && rm /usr/bin/phpize \
     && rm -rf /var/cache/apk/* \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
     && rm -rf /var/www
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
