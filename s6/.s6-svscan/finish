@@ -1,5 +1,9 @@
 #!/bin/sh
 
+for file in /etc/s6/*/finish; do
+   $file
+done
+
 for service in /etc/s6/* ; do
    s6-svwait -d $service
 done
