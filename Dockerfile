@@ -54,6 +54,4 @@ ENTRYPOINT []
 
 EXPOSE 80
 
-STOPSIGNAL SIGQUIT
-
 CMD ["sh", "/start.sh"]
