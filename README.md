@@ -2,7 +2,7 @@
 
 Base on Alpine Nginx and PHP apk package.
 
-Nginx version: 1.10.0
+Nginx version: 1.10.3
 
 PHP version: 5.6.30
 
