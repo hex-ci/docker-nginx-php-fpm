@@ -61,6 +61,7 @@ RUN apk add --no-cache \
        /usr/local/lib/preloadable_libiconv.so \
        /usr/local/bin/iconv \
        /usr/bin/php-fpm \
+       /usr/lib/php5/modules/*.so \
 
     && apk del --no-cache .build-deps \
 
