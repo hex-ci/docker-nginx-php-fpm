@@ -24,10 +24,11 @@ RUN apk add --no-cache \
     php5-xmlreader \
     php5-xsl \
     php5-zlib \
-    s6
+    s6 \
 
-# install php5-iconv
-RUN apk add --no-cache --virtual .build-deps wget build-base php5-dev autoconf re2c libtool file \
+    # install php5-iconv
+
+    && apk add --no-cache --virtual .build-deps wget build-base php5-dev autoconf re2c libtool file \
 
     # Install GNU libiconv
 
@@ -52,18 +53,18 @@ RUN apk add --no-cache --virtual .build-deps wget build-base php5-dev autoconf r
     && ./configure --with-iconv=/usr/local \
     && make \
     && make install \
-    && echo "extension=iconv.so" >> /etc/php5/conf.d/iconv.ini
+    && echo "extension=iconv.so" >> /etc/php5/conf.d/iconv.ini \
 
-#strip
-RUN strip -s /usr/local/lib/libcharset.so.1.0.0 \
-    /usr/local/lib/libiconv.so.2.6.0 \
-    /usr/local/lib/preloadable_libiconv.so \
-    /usr/bin/php-fpm
+    # strip
+    && strip -s /usr/local/lib/libcharset.so.1.0.0 \
+       /usr/local/lib/libiconv.so.2.6.0 \
+       /usr/local/lib/preloadable_libiconv.so \
+       /usr/bin/php-fpm \
 
-RUN apk del --no-cache .build-deps
+    && apk del --no-cache .build-deps \
 
-# clean
-RUN rm /usr/bin/php5 \
+    # clean
+    && rm /usr/bin/php5 \
     && rm /usr/bin/php \
     && rm /usr/bin/phpize5 \
     && rm /usr/bin/phpize \
