@@ -59,6 +59,7 @@ RUN apk add --no-cache \
     && strip -s /usr/local/lib/libcharset.so.1.0.0 \
        /usr/local/lib/libiconv.so.2.6.0 \
        /usr/local/lib/preloadable_libiconv.so \
+       /usr/local/bin/iconv \
        /usr/bin/php-fpm \
 
     && apk del --no-cache .build-deps \
@@ -72,8 +73,9 @@ RUN apk add --no-cache \
     && rm -rf /tmp/* \
     && rm -rf /opt \
     && rm -rf /usr/local/lib/perl5 \
-    && rm -rf /usr/local/share/* \
     && rm -rf /usr/local/lib/libcharset.a \
+    && rm -rf /usr/local/include/* \
+    && rm -rf /usr/local/share/* \
     && rm -rf /var/www
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
