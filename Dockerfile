@@ -72,6 +72,7 @@ RUN apk add --no-cache \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/* \
     && rm -rf /opt \
+    && rm -rf /usr/include/* \
     && rm -rf /usr/local/lib/perl5 \
     && rm -rf /usr/local/lib/libcharset.a \
     && rm -rf /usr/local/include/* \
