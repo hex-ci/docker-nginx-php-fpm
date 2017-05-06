@@ -62,6 +62,9 @@ RUN apk add --no-cache \
        /usr/local/bin/iconv \
        /usr/bin/php-fpm \
        /usr/lib/php5/modules/*.so \
+       /lib/libexecline.so.2.2.0.0 \
+       /lib/libs6.so.2.4.0.0 \
+       /lib/libskarnet.so.2.4.0.2 \
 
     && apk del --no-cache .build-deps \
 
